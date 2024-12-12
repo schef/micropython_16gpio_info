@@ -46,6 +46,16 @@ async def main_logic_task():
             await asyncio.sleep_ms(500)
             await asyncio.sleep_ms(29*1000)
 
+        for i in leds.leds[1:]:
+            leds.set_state_by_name(i.name, 1)
+            await asyncio.sleep_ms(500)
+            leds.set_state_by_name(i.name, 0)
+            await asyncio.sleep_ms(500)
+            await asyncio.sleep_ms(29*1000)
+
+        set_blink_status(False)
+        await asyncio.sleep_ms(1*90*1000)
+
 def init():
     print("[RUNNER]: init")
     leds.init()
